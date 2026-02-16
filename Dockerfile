@@ -3,7 +3,9 @@ FROM python:3.14
 
 EXPOSE 80/tcp
 
-EXPOSE 8080 
+EXPOSE 8080
+
+EXPOSE 8000
 
 # Create a non-root user and group
 # 'useradd' options may vary slightly by Linux distribution (e.g., Alpine uses 'adduser -D')
@@ -28,4 +30,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
 
 # Define the command to run the bot when the container starts
-CMD ["python", "Bot.py"]
+CMD ["python", "Bot.py", "runserver", "0.0.0.0:8000"]
