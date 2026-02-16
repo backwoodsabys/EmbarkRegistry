@@ -1,12 +1,6 @@
 # Use the official Python image as the base image
 FROM python:3.14
 
-EXPOSE 80/tcp
-
-EXPOSE 8080
-
-EXPOSE 8000
-
 # Create a non-root user and group
 # 'useradd' options may vary slightly by Linux distribution (e.g., Alpine uses 'adduser -D')
 RUN groupadd --gid 1000 appgroup && useradd --uid 1000 --gid appgroup -m appuser
@@ -22,6 +16,12 @@ WORKDIR /usr/app
 
 # Copy the requirements file into the container at /app
 COPY requirements.txt ./
+
+EXPOSE 80/tcp
+
+EXPOSE 8080 
+
+EXPOSE 8000
 
 # Install any needed packages specified in requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
