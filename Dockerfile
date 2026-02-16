@@ -2,6 +2,7 @@
 FROM python:3.14
 
 EXPOSE 80/tcp
+
 EXPOSE 8080 
 
 # Create a non-root user and group
